@@ -4,18 +4,21 @@ new Vue({
     // which is included at the bottom of the html file.
     el: "#app",
     data: {
-        name: "",
-        greeting: ""
+        email: "",
+        password: "",
+        loggedIn: false, // controls the display
+        errorMessage: ""
     },
     methods: {
-        sayHello() {
-            console.log("Say Hello " + this.name)
-            if (this.name == "") {
-                this.greeting = "Hello NoName"
+        login() {
+            if (this.password == "secret") { // TODO: call REST service
+                this.loggedIn = true
+            } else {
+                this.errorMessage = "No entry ... Try again"
             }
-            else {
-                this.greeting = "Hello " + this.name
-            }
+        },
+        logout() {
+            this.loggedIn = false
         }
     }
 })

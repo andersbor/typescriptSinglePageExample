@@ -12,15 +12,24 @@
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-  <title>Hello app</title>
+  <title>Single page example</title>
 </head>
 
 <body>
-  <h1>Hello</h1>
+  <h1>Very simple single page example</h1>
   <div id="app">
-    <input v-model="name" placeholder="Name">
-    <button v-on:click="sayHello()" class="btn btn-primary">Say hello</button>
-    <div>{{ greeting }}</div>
+    <div v-if="loggedIn">
+      Welcome {{ email }}
+      <div>Do something ....</div>
+      <button v-on:click="logout">Log out</button>
+    </div>
+    <div v-else>
+      <input v-model="email" placeholder="email" type="email">
+      <input v-model="password" placeholder="password" type="password">
+      <button v-on:click="login">Login</button>
+      <div class="text-warning">{{ errorMessage }}</div>
+    </div>
+
   </div>
 
   <script src="bundle.js"></script>
